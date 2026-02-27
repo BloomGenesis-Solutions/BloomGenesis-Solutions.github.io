@@ -13,33 +13,31 @@
         h2 { color: #03a1fc; font-size: 1.2em; font-weight: bold; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; } 
         .intro-text { line-height: 1.6; color: #555; margin-bottom: 30px; font-size: 1.05em; }
         
-        /* 2. ACCORDION DROP-DOWNS (The Box) */
+        /* 2. ACCORDION DROP-DOWNS */
         .skills-accordion { margin-bottom: 35px; text-align: left; }
         details { background-color: #f9f9f9; margin-bottom: 15px; border-radius: 6px; border: 1px solid #e0e0e0; overflow: hidden; }
         
         /* 3. THE CLICKABLE TITLE */
         summary { padding: 15px 20px; font-weight: bold; cursor: pointer; color: #333; list-style-type: none; position: relative; transition: background-color 0.3s ease; }
-        summary::-webkit-details-marker { display: none; } /* Hides default arrow */
-        
-        /* The Plus Icon */
+        summary::-webkit-details-marker { display: none; }
         summary::after { content: '+'; position: absolute; right: 20px; font-size: 1.5em; line-height: 1; color: #03a1fc; top: 50%; transform: translateY(-50%); }
         summary:hover { background-color: #f1f1f1; color: #03a1fc; }
         
-        /* 4. THE OPEN STATE HIGHLIGHT (Your logo purple and Minus Icon) */
+        /* 4. THE OPEN STATE HIGHLIGHT */
         details[open] summary { color: #7d1de6; background-color: #f4ebff; border-bottom: 1px solid #e0e0e0; }
         details[open] summary::after { content: '-'; color: #7d1de6; }
 
-        /* 5. THE BULLETPROOF ANIMATION */
+        /* 5. THE ANIMATION BLUEPRINT */
         @keyframes floatDown {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* The hidden text style (Animation removed from the closed state) */
-        details p { padding: 20px; margin: 0; line-height: 1.6; color: #555; font-size: 0.95em; }
+        /* The hidden text style (Notice opacity is 0 so it stays hidden) */
+        details p { padding: 20px; margin: 0; line-height: 1.6; color: #555; font-size: 0.95em; opacity: 0; }
         
-        /* The trigger: Forces the browser to run the animation from scratch ONLY when opened */
-        details[open] summary ~ p { animation: floatDown 0.6s ease-in-out; }
+        /* The class our JavaScript will add to trigger the animation */
+        .play-animation { animation: floatDown 0.6s ease-out forwards; }
         
         /* 6. CONTACT BUTTON */
         a.button { display: inline-block; padding: 14px 30px; background-color: #03c993; color: #fff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: 0.3s; font-size: 1.1em; } 
@@ -85,5 +83,27 @@
         
         <a href="mailto:your-email@example.com" class="button">Contact Me</a>
     </div>
+
+    <script>
+        // Grab all the <details> tags on the page
+        const allDropdowns = document.querySelectorAll('details');
+        
+        allDropdowns.forEach(dropdown => {
+            // Listen for when someone clicks one open or closed
+            dropdown.addEventListener('toggle', function() {
+                const paragraph = this.querySelector('p');
+                
+                if (this.open) {
+                    // Force the browser reflow (The magic trick!)
+                    void paragraph.offsetWidth; 
+                    // Add the animation class
+                    paragraph.classList.add('play-animation');
+                } else {
+                    // Remove the animation class when closed so it resets
+                    paragraph.classList.remove('play-animation');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
