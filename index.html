@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* 1. RESET & BASIC BODY (Now using 'Inter') */
+        /* 1. RESET & BASIC BODY */
         body { 
             font-family: 'Inter', system-ui, -apple-system, sans-serif; 
             background-color: #f8fafc; 
@@ -36,7 +36,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -1; 
+            z-index: -1; /* Placed behind content */
             pointer-events: none; 
         }
 
@@ -51,7 +51,7 @@
 
         /* 4. HERO (TOP SECTION) */
         .hero-section {
-            background: #ffffff; 
+            background: #ffffff; /* Blocks out the background nodes for clarity */
             padding: 50px 40px;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.06);
@@ -65,7 +65,6 @@
         
         .logo { max-width: 250px; height: auto; margin-bottom: 20px; }
         
-        /* Updated typography weights for maximum impact */
         h1 { color: #0ea5e9; font-size: 1.8em; font-weight: 800; margin-bottom: 15px; letter-spacing: 1px; text-transform: uppercase; } 
         .intro-text { line-height: 1.7; color: #64748b; margin-bottom: 30px; font-size: 1.1em; max-width: 600px; margin-left: auto; margin-right: auto; font-weight: 400;}
 
@@ -142,6 +141,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
+        /* Entrance animation delays */
         .skill-card:nth-child(1) { animation-delay: 0.1s; }
         .skill-card:nth-child(2) { animation-delay: 0.2s; }
         .skill-card:nth-child(3) { animation-delay: 0.3s; }
@@ -204,6 +204,21 @@
         let width, height;
         let particles = [];
 
+        // -- Define colors from your logo --
+        // Approximate values for Purple, Blue, Green, Yellow/Orange
+        const logoColors = ['#A855F7', '#0EA5E9', '#03C993', '#F59E0B'];
+        const defaultColor = '#94a3b8'; // Original neutral slate grey
+
+        // Helper function to convert hex to RGB values for connection line transparency
+        function hexToRgb(hex) {
+            var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : null;
+        }
+
         function resize() {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
@@ -218,6 +233,15 @@
                 this.vx = (Math.random() - 0.5) * 0.7; 
                 this.vy = (Math.random() - 0.5) * 0.7;
                 this.radius = Math.random() * 2.5 + 1; 
+                
+                // -- Apply 75% logo colors vs 25% neutral grey logic --
+                if (Math.random() < 0.75) {
+                    // Pick random color from the logo color array
+                    this.color = logoColors[Math.floor(Math.random() * logoColors.length)];
+                } else {
+                    this.color = defaultColor;
+                }
+                this.rgb = hexToRgb(this.color); // Cache RGB values for connections
             }
             update() {
                 this.x += this.vx;
@@ -228,11 +252,12 @@
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = '#94a3b8'; 
+                ctx.fillStyle = this.color; // Use the node's assigned color
                 ctx.fill();
             }
         }
 
+        // Generate nodes
         for (let i = 0; i < 70; i++) particles.push(new Particle());
 
         function animate() {
@@ -249,7 +274,9 @@
                     
                     if (dist < 130) { 
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(148, 163, 184, ${1 - dist/130})`;
+                        // Lines use the node color with opacity based on distance
+                        const { r, g, b } = particles[i].rgb;
+                        ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${1 - dist/130})`;
                         ctx.lineWidth = 1;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
