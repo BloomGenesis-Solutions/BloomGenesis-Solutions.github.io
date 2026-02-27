@@ -15,21 +15,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* 1. ANIMATED DATA GRID BACKGROUND */
+        /* 1. DATA NODE & GLOW BACKGROUND */
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             background-color: #f8fafc; 
             color: #334155; 
             margin: 0; 
             padding: 40px 20px;
-            background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
-            background-size: 40px 40px;
-            background-position: center center;
+            
+            /* Layer 1: Data Nodes (Dots) | Layer 2: Shifting Tech Glow */
+            background-image: 
+                radial-gradient(#94a3b8 1.5px, transparent 1.5px),
+                linear-gradient(135deg, rgba(14, 165, 233, 0.08) 0%, rgba(125, 29, 230, 0.08) 100%);
+            background-size: 35px 35px, 200% 200%;
+            animation: dataFlow 15s ease infinite;
+        }
+
+        /* Slowly moves the background gradient so it feels "alive" */
+        @keyframes dataFlow {
+            0% { background-position: 0 0, 0% 50%; }
+            50% { background-position: 0 0, 100% 50%; }
+            100% { background-position: 0 0, 0% 50%; }
         }
 
         /* 2. TOP-TO-BOTTOM WRAPPER */
         .page-wrapper {
-            max-width: 1000px; /* Wider to allow the grid to breathe */
+            max-width: 1000px; 
             margin: 0 auto;
             padding-bottom: 50px;
         }
@@ -42,7 +53,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.04);
             border-top: 6px solid #03c993; 
             text-align: center;
-            margin-bottom: 50px; /* Pushes the grid down */
+            margin-bottom: 50px; 
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
@@ -73,7 +84,7 @@
         /* 5. SKILLS GRID (MIDDLE SECTION) */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Auto-adjusts cards to fit perfectly */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
             gap: 30px;
             margin-bottom: 50px; 
         }
@@ -121,7 +132,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.04);
             border-bottom: 6px solid #0ea5e9;
             opacity: 0;
-            animation: slideUpFade 0.6s ease-out 0.6s forwards; /* Fades in last */
+            animation: slideUpFade 0.6s ease-out 0.6s forwards; 
         }
         .bottom-cta h2 { color: #334155; margin-top: 0; margin-bottom: 20px; font-size: 1.5em; }
 
