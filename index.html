@@ -36,7 +36,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -1; /* Placed behind content */
+            z-index: -1; 
             pointer-events: none; 
         }
 
@@ -51,7 +51,7 @@
 
         /* 4. HERO (TOP SECTION) */
         .hero-section {
-            background: #ffffff; /* Blocks out the background nodes for clarity */
+            background: #ffffff; 
             padding: 50px 40px;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.06);
@@ -94,35 +94,60 @@
             margin-bottom: 50px; 
         }
 
-        /* 7. SKILL CARDS & HOVER EFFECTS */
+        /* 7. SKILL CARDS & BASE HOVER EFFECTS */
         .skill-card {
             background: #ffffff;
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-            border-left: 4px solid #0ea5e9; 
+            border-left: 4px solid #0ea5e9; /* Fallback border */
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             opacity: 0;
             transform: translateY(30px);
             animation: slideUpFade 0.6s ease-out forwards;
         }
 
+        /* General Hover Lift & Shadow */
         .skill-card:hover {
             transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(14, 165, 233, 0.15);
-            border-left: 8px solid #03c993; 
+            box-shadow: 0 15px 35px rgba(0,0,0, 0.08);
+            border-left-width: 8px; /* Thickens whatever color the border already is */
         }
 
         .skill-icon {
             font-size: 2.2em;
-            color: #0ea5e9; 
             margin-bottom: 15px;
-            transition: color 0.4s ease;
+            transition: transform 0.4s ease;
         }
-        .skill-card:hover .skill-icon { color: #03c993; }
+        
+        .skill-card:hover .skill-icon { 
+            transform: scale(1.1); /* Slight pop on hover */
+        }
 
         .skill-card h3 { color: #334155; margin-top: 0; font-size: 1.2em; font-weight: 600; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
         .skill-card p { color: #64748b; line-height: 1.6; font-size: 0.95em; margin-bottom: 0; }
+
+        /* --- COLOR CODING THE SKILL CARDS --- */
+        
+        /* Card 1: Green */
+        .skill-card:nth-child(1) { border-left-color: #03c993; animation-delay: 0.1s; }
+        .skill-card:nth-child(1) .skill-icon { color: #03c993; }
+
+        /* Card 2: Blue */
+        .skill-card:nth-child(2) { border-left-color: #0ea5e9; animation-delay: 0.2s; }
+        .skill-card:nth-child(2) .skill-icon { color: #0ea5e9; }
+
+        /* Card 3: Purple */
+        .skill-card:nth-child(3) { border-left-color: #7d1de6; animation-delay: 0.3s; }
+        .skill-card:nth-child(3) .skill-icon { color: #7d1de6; }
+
+        /* Card 4: Yellow/Orange */
+        .skill-card:nth-child(4) { border-left-color: #F59E0B; animation-delay: 0.4s; }
+        .skill-card:nth-child(4) .skill-icon { color: #F59E0B; }
+
+        /* Card 5: Blue (Cycle Repeats) */
+        .skill-card:nth-child(5) { border-left-color: #0ea5e9; animation-delay: 0.5s; }
+        .skill-card:nth-child(5) .skill-icon { color: #0ea5e9; }
 
         /* 8. BOTTOM CTA SECTION */
         .bottom-cta {
@@ -131,7 +156,7 @@
             padding: 40px;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-            border-bottom: 6px solid #0ea5e9;
+            border-bottom: 6px solid #7d1de6; /* Purple base */
             opacity: 0;
             animation: slideUpFade 0.6s ease-out 0.6s forwards; 
         }
@@ -140,14 +165,6 @@
         @keyframes slideUpFade {
             to { opacity: 1; transform: translateY(0); }
         }
-        
-        /* Entrance animation delays */
-        .skill-card:nth-child(1) { animation-delay: 0.1s; }
-        .skill-card:nth-child(2) { animation-delay: 0.2s; }
-        .skill-card:nth-child(3) { animation-delay: 0.3s; }
-        .skill-card:nth-child(4) { animation-delay: 0.4s; }
-        .skill-card:nth-child(5) { animation-delay: 0.5s; }
-
     </style>
 </head>
 <body>
@@ -204,12 +221,11 @@
         let width, height;
         let particles = [];
 
-        // -- Define colors from your logo --
-        // Approximate values for Purple, Blue, Green, Yellow/Orange
+        // Define colors from your logo 
         const logoColors = ['#A855F7', '#0EA5E9', '#03C993', '#F59E0B'];
-        const defaultColor = '#94a3b8'; // Original neutral slate grey
+        const defaultColor = '#94a3b8'; 
 
-        // Helper function to convert hex to RGB values for connection line transparency
+        // Helper function for connection line transparency
         function hexToRgb(hex) {
             var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
             return result ? {
@@ -234,14 +250,12 @@
                 this.vy = (Math.random() - 0.5) * 0.7;
                 this.radius = Math.random() * 2.5 + 1; 
                 
-                // -- Apply 75% logo colors vs 25% neutral grey logic --
                 if (Math.random() < 0.75) {
-                    // Pick random color from the logo color array
                     this.color = logoColors[Math.floor(Math.random() * logoColors.length)];
                 } else {
                     this.color = defaultColor;
                 }
-                this.rgb = hexToRgb(this.color); // Cache RGB values for connections
+                this.rgb = hexToRgb(this.color); 
             }
             update() {
                 this.x += this.vx;
@@ -252,12 +266,11 @@
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = this.color; // Use the node's assigned color
+                ctx.fillStyle = this.color; 
                 ctx.fill();
             }
         }
 
-        // Generate nodes
         for (let i = 0; i < 70; i++) particles.push(new Particle());
 
         function animate() {
@@ -274,7 +287,6 @@
                     
                     if (dist < 130) { 
                         ctx.beginPath();
-                        // Lines use the node color with opacity based on distance
                         const { r, g, b } = particles[i].rgb;
                         ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${1 - dist/130})`;
                         ctx.lineWidth = 1;
