@@ -11,46 +11,45 @@
     <title>BloomGenesis Solutions | Tag Implementation</title>
     
     <link rel="icon" type="image/png" href="bg-logo-full.png">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* 1. DATA NODE & GLOW BACKGROUND */
+        /* 1. RESET & BASIC BODY */
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #f8fafc; 
+            background-color: #f8fafc; /* Clean, light base */
             color: #334155; 
             margin: 0; 
             padding: 40px 20px;
-            
-            /* Layer 1: Data Nodes (Dots) | Layer 2: Shifting Tech Glow */
-            background-image: 
-                radial-gradient(#94a3b8 1.5px, transparent 1.5px),
-                linear-gradient(135deg, rgba(14, 165, 233, 0.08) 0%, rgba(125, 29, 230, 0.08) 100%);
-            background-size: 35px 35px, 200% 200%;
-            animation: dataFlow 15s ease infinite;
+            position: relative;
         }
 
-        /* Slowly moves the background gradient so it feels "alive" */
-        @keyframes dataFlow {
-            0% { background-position: 0 0, 0% 50%; }
-            50% { background-position: 0 0, 100% 50%; }
-            100% { background-position: 0 0, 0% 50%; }
+        /* 2. THE CANVAS BACKGROUND */
+        #network-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; /* Puts it behind all your content */
+            pointer-events: none; /* Stops it from blocking clicks */
         }
 
-        /* 2. TOP-TO-BOTTOM WRAPPER */
+        /* 3. TOP-TO-BOTTOM WRAPPER */
         .page-wrapper {
             max-width: 1000px; 
             margin: 0 auto;
             padding-bottom: 50px;
+            position: relative;
+            z-index: 1; /* Keeps content above the canvas */
         }
 
-        /* 3. HERO (TOP SECTION) */
+        /* 4. HERO (TOP SECTION) */
         .hero-section {
-            background: #ffffff;
+            background: #ffffff; /* This protects your logo from background lines */
             padding: 50px 40px;
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
             border-top: 6px solid #03c993; 
             text-align: center;
             margin-bottom: 50px; 
@@ -63,7 +62,7 @@
         h1 { color: #0ea5e9; font-size: 1.8em; font-weight: 800; margin-bottom: 15px; letter-spacing: 1px; text-transform: uppercase; } 
         .intro-text { line-height: 1.7; color: #64748b; margin-bottom: 30px; font-size: 1.1em; max-width: 600px; margin-left: auto; margin-right: auto;}
 
-        /* 4. CONTACT BUTTON */
+        /* 5. CONTACT BUTTON */
         a.button { 
             display: inline-block; 
             padding: 16px 40px; 
@@ -81,7 +80,7 @@
             box-shadow: 0 8px 25px rgba(125, 29, 230, 0.4);
         }
 
-        /* 5. SKILLS GRID (MIDDLE SECTION) */
+        /* 6. SKILLS GRID (MIDDLE SECTION) */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
@@ -89,12 +88,12 @@
             margin-bottom: 50px; 
         }
 
-        /* 6. SKILL CARDS & HOVER EFFECTS */
+        /* 7. SKILL CARDS & HOVER EFFECTS */
         .skill-card {
             background: #ffffff;
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             border-left: 4px solid #0ea5e9; 
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             opacity: 0;
@@ -108,17 +107,13 @@
             border-left: 8px solid #03c993; 
         }
 
-        /* 7. ICON STYLING */
         .skill-icon {
             font-size: 2.2em;
             color: #0ea5e9; 
             margin-bottom: 15px;
             transition: color 0.4s ease;
         }
-        
-        .skill-card:hover .skill-icon {
-            color: #03c993; 
-        }
+        .skill-card:hover .skill-icon { color: #03c993; }
 
         .skill-card h3 { color: #334155; margin-top: 0; font-size: 1.2em; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
         .skill-card p { color: #64748b; line-height: 1.6; font-size: 0.95em; margin-bottom: 0; }
@@ -129,14 +124,13 @@
             background: #ffffff;
             padding: 40px;
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
             border-bottom: 6px solid #0ea5e9;
             opacity: 0;
             animation: slideUpFade 0.6s ease-out 0.6s forwards; 
         }
         .bottom-cta h2 { color: #334155; margin-top: 0; margin-bottom: 20px; font-size: 1.5em; }
 
-        /* 9. STAGGERED ENTRANCE ANIMATIONS */
         @keyframes slideUpFade {
             to { opacity: 1; transform: translateY(0); }
         }
@@ -152,8 +146,10 @@
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KVP9JT42"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+    <canvas id="network-bg"></canvas>
+
     <div class="page-wrapper">
-        
         <header class="hero-section">
             <img src="bg-logo-full.png" alt="BloomGenesis Logo" class="logo">
             <h1>Tag Implementation</h1>
@@ -162,44 +158,108 @@
         </header>
 
         <section class="skills-grid">
-            
             <div class="skill-card">
                 <i class="fa-solid fa-server skill-icon"></i>
                 <h3>GTM & sGTM</h3>
                 <p>Acting as the central nervous system for your website's data. Server-Side GTM takes this further by moving execution to a secure cloud server—improving page speed and data accuracy.</p>
             </div>
-
             <div class="skill-card">
                 <i class="fa-solid fa-chart-line skill-icon"></i>
                 <h3>Google Analytics 4</h3>
                 <p>Transitioning to and optimizing GA4 to accurately track user journeys, custom events, and advanced conversions to deliver actionable business insights.</p>
             </div>
-
             <div class="skill-card">
                 <i class="fa-solid fa-bullseye skill-icon"></i>
                 <h3>Campaign Manager 360</h3>
                 <p>Seamlessly integrating CM360. I specialize in precise floodlight configuration and ad attribution to ensure enterprise media campaigns are tracked flawlessly.</p>
             </div>
-
             <div class="skill-card">
                 <i class="fa-solid fa-layer-group skill-icon"></i>
                 <h3>Data Layer Architecture</h3>
                 <p>Structuring custom, scalable Data Layers to capture e-commerce transactions and critical site variables. The absolute foundation of reliable tracking.</p>
             </div>
-
             <div class="skill-card">
                 <i class="fa-solid fa-chart-pie skill-icon"></i>
                 <h3>Looker Studio</h3>
                 <p>Transforming complex, raw data into dynamic, automated, and visually engaging dashboards that allow stakeholders to easily monitor KPIs.</p>
             </div>
-
         </section>
 
         <div class="bottom-cta">
             <h2>Ready to transform your data infrastructure?</h2>
             <a href="mailto:solutions@bloomgenesisinc.com" class="button">Contact Me</a>
         </div>
-
     </div>
+
+    <script>
+        const canvas = document.getElementById('network-bg');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        // Makes sure the canvas always fits the screen
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        // Node properties
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.7; // Speed
+                this.vy = (Math.random() - 0.5) * 0.7;
+                this.radius = Math.random() * 2.5 + 1; // Size of dots
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                // Bounce off edges
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = '#94a3b8'; // Slate color for dots
+                ctx.fill();
+            }
+        }
+
+        // Generate 70 nodes
+        for (let i = 0; i < 70; i++) particles.push(new Particle());
+
+        // Animate the connections
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                
+                // Draw lines if nodes are close to each other
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (dist < 130) { // Connection distance
+                        ctx.beginPath();
+                        // Opacity fades as nodes move apart
+                        ctx.strokeStyle = `rgba(148, 163, 184, ${1 - dist/130})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
 </body>
 </html>
