@@ -11,13 +11,18 @@
     <title>BloomGenesis Solutions | Tag Implementation</title>
     
     <link rel="icon" type="image/png" href="bg-logo-full.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* 1. RESET & BASIC BODY */
+        /* 1. RESET & BASIC BODY (Now using 'Inter') */
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #f8fafc; /* Clean, light base */
+            font-family: 'Inter', system-ui, -apple-system, sans-serif; 
+            background-color: #f8fafc; 
             color: #334155; 
             margin: 0; 
             padding: 40px 20px;
@@ -31,8 +36,8 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -1; /* Puts it behind all your content */
-            pointer-events: none; /* Stops it from blocking clicks */
+            z-index: -1; 
+            pointer-events: none; 
         }
 
         /* 3. TOP-TO-BOTTOM WRAPPER */
@@ -41,12 +46,12 @@
             margin: 0 auto;
             padding-bottom: 50px;
             position: relative;
-            z-index: 1; /* Keeps content above the canvas */
+            z-index: 1; 
         }
 
         /* 4. HERO (TOP SECTION) */
         .hero-section {
-            background: #ffffff; /* This protects your logo from background lines */
+            background: #ffffff; 
             padding: 50px 40px;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.06);
@@ -59,8 +64,10 @@
         }
         
         .logo { max-width: 250px; height: auto; margin-bottom: 20px; }
+        
+        /* Updated typography weights for maximum impact */
         h1 { color: #0ea5e9; font-size: 1.8em; font-weight: 800; margin-bottom: 15px; letter-spacing: 1px; text-transform: uppercase; } 
-        .intro-text { line-height: 1.7; color: #64748b; margin-bottom: 30px; font-size: 1.1em; max-width: 600px; margin-left: auto; margin-right: auto;}
+        .intro-text { line-height: 1.7; color: #64748b; margin-bottom: 30px; font-size: 1.1em; max-width: 600px; margin-left: auto; margin-right: auto; font-weight: 400;}
 
         /* 5. CONTACT BUTTON */
         a.button { 
@@ -69,7 +76,7 @@
             background: linear-gradient(135deg, #7d1de6 0%, #5b12a8 100%); 
             color: #fff; 
             text-decoration: none; 
-            font-weight: bold; 
+            font-weight: 600; 
             border-radius: 50px; 
             transition: all 0.3s ease; 
             font-size: 1.1em;
@@ -115,7 +122,7 @@
         }
         .skill-card:hover .skill-icon { color: #03c993; }
 
-        .skill-card h3 { color: #334155; margin-top: 0; font-size: 1.2em; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+        .skill-card h3 { color: #334155; margin-top: 0; font-size: 1.2em; font-weight: 600; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
         .skill-card p { color: #64748b; line-height: 1.6; font-size: 0.95em; margin-bottom: 0; }
 
         /* 8. BOTTOM CTA SECTION */
@@ -129,7 +136,7 @@
             opacity: 0;
             animation: slideUpFade 0.6s ease-out 0.6s forwards; 
         }
-        .bottom-cta h2 { color: #334155; margin-top: 0; margin-bottom: 20px; font-size: 1.5em; }
+        .bottom-cta h2 { color: #334155; margin-top: 0; margin-bottom: 20px; font-size: 1.5em; font-weight: 800; }
 
         @keyframes slideUpFade {
             to { opacity: 1; transform: translateY(0); }
@@ -197,7 +204,6 @@
         let width, height;
         let particles = [];
 
-        // Makes sure the canvas always fits the screen
         function resize() {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
@@ -205,34 +211,30 @@
         window.addEventListener('resize', resize);
         resize();
 
-        // Node properties
         class Particle {
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.7; // Speed
+                this.vx = (Math.random() - 0.5) * 0.7; 
                 this.vy = (Math.random() - 0.5) * 0.7;
-                this.radius = Math.random() * 2.5 + 1; // Size of dots
+                this.radius = Math.random() * 2.5 + 1; 
             }
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-                // Bounce off edges
                 if (this.x < 0 || this.x > width) this.vx *= -1;
                 if (this.y < 0 || this.y > height) this.vy *= -1;
             }
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = '#94a3b8'; // Slate color for dots
+                ctx.fillStyle = '#94a3b8'; 
                 ctx.fill();
             }
         }
 
-        // Generate 70 nodes
         for (let i = 0; i < 70; i++) particles.push(new Particle());
 
-        // Animate the connections
         function animate() {
             ctx.clearRect(0, 0, width, height);
             
@@ -240,15 +242,13 @@
                 particles[i].update();
                 particles[i].draw();
                 
-                // Draw lines if nodes are close to each other
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
                     
-                    if (dist < 130) { // Connection distance
+                    if (dist < 130) { 
                         ctx.beginPath();
-                        // Opacity fades as nodes move apart
                         ctx.strokeStyle = `rgba(148, 163, 184, ${1 - dist/130})`;
                         ctx.lineWidth = 1;
                         ctx.moveTo(particles[i].x, particles[i].y);
