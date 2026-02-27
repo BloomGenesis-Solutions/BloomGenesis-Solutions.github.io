@@ -32,19 +32,26 @@
             border-bottom: 1px solid #e0e0e0;
         }
 
-        /* 3. The Animation Blueprint (The "Float and Fade") */
+/* 3. The Animation Blueprint */
         @keyframes floatDown {
-            0% { opacity: 0; transform: translateY(-10px); }
+            0% { opacity: 0; transform: translateY(-15px); } /* Starts slightly higher up */
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* 4. Applying the Animation to the paragraph */
-        details[open] p { 
-            padding: 20px; 
+        /* 4. The Reset State (Forces the browser to forget the animation when closed) */
+        details p { 
+            padding: 0 20px 20px 20px; 
             margin: 0;
             line-height: 1.6; 
             color: #555; 
-            animation: floatDown 0.4s ease-out forwards; 
+            opacity: 0; 
+            animation: none; 
+        }
+
+        /* 5. The Trigger (Plays gracefully over 0.8 seconds when opened) */
+        details[open] p { 
+            padding-top: 20px;
+            animation: floatDown 0.8s ease forwards; 
         }
         
         /* The Contact button. Notice it uses your logo's Green (#03c993) */
