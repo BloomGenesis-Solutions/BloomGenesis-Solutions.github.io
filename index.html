@@ -1,110 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BloomGenesis | Analytics Specialist</title>
+<div class="container">
+    <img src="bg-logo-full.png" alt="BloomGenesis Logo" class="logo">
+    <h2>Precision Analytics</h2>
+    <p>Architecting privacy-first tracking solutions for modern agencies.</p>
     
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KVP9JT42');</script>
-    <style>
-        /* 1. GLOBAL DARK THEME */
-        body {
-            background-color: #0f172a; /* Deep Midnight */
-            color: #f1f5f9;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* 2. GLASSMORPHISM CONTAINER */
-        .container {
-            background: rgba(30, 41, 59, 0.7); 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 60px 40px;
-            max-width: 450px;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            animation: floatDown 0.8s ease-out forwards;
-        }
-
-        /* 3. ELEMENTS */
-        .logo {
-            max-width: 160px;
-            margin-bottom: 24px;
-            filter: drop-shadow(0 0 8px rgba(3, 201, 147, 0.2));
-            transition: transform 0.3s ease;
-        }
-        .logo:hover { transform: scale(1.05); }
-
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 12px;
-            font-weight: 700;
-            letter-spacing: -0.025em;
-            background: linear-gradient(to right, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        p {
-            color: #94a3b8;
-            line-height: 1.6;
-            margin-bottom: 35px;
-            font-size: 1.05rem;
-        }
-
-        /* 4. THE ACTION BUTTON */
-        a.button {
-            display: inline-block;
-            padding: 18px 36px;
-            background: linear-gradient(135deg, #03c993 0%, #02a377 100%);
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            box-shadow: 0 10px 20px -5px rgba(3, 201, 147, 0.4);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        a.button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 25px -5px rgba(3, 201, 147, 0.5);
-        }
-
-        /* 5. ANIMATIONS */
-        @keyframes floatDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* DIY Banner Styling (Ensuring it fits Dark Mode) */
-        #consent-banner {
-            background: #1e293b !important;
-            border-top: 4px solid #03c993 !important;
-            color: #f1f5f9 !important;
-        }
-    </style>
-</head>
-<body>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KVP9JT42"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
-    <div class="container">
-        <img src="bg-logo-full.png" alt="BloomGenesis Logo" class="logo">
-        <h2>Precision Analytics</h2>
-        <p>Architecting privacy-first tracking solutions for data-driven agencies.</p>
-        <a href="mailto:contact@bloomgenesisinc.com" class="button">Start Your Implementation</a>
+    <div class="skills-grid">
+        <div class="skill-item">
+            <strong>GTM</strong>
+            <span>Tag Architecture</span>
+        </div>
+        <div class="skill-item">
+            <strong>GA4</strong>
+            <span>Measurement Strategy</span>
+        </div>
+        <div class="skill-item">
+            <strong>Consent</strong>
+            <span>Advanced Implementation</span>
+        </div>
     </div>
-</body>
-</html>
+
+    <a href="mailto:contact@bloomgenesisinc.com" class="button">Start Your Implementation</a>
+</div>
+
+<style>
+    /* New Styles to support the Grid */
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-bottom: 35px;
+    }
+
+    .skill-item {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 15px 10px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .skill-item strong {
+        display: block;
+        color: #03c993; /* Your brand green */
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
+
+    .skill-item span {
+        font-size: 0.8rem;
+        color: #94a3b8;
+    }
+</style>
