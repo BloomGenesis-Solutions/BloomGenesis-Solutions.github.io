@@ -64,7 +64,6 @@
         }
         
         .logo { max-width: 250px; height: auto; margin-bottom: 20px; }
-        
         h1 { color: #0ea5e9; font-size: 2em; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.5px; } 
         h2.subtitle { color: #7d1de6; font-size: 1.1em; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 30px; }
 
@@ -86,13 +85,13 @@
             box-shadow: 0 8px 25px rgba(125, 29, 230, 0.4);
         }
 
-        /* 6. MANIFESTO / PHILOSOPHY SECTION (NEW) */
+        /* 6. MANIFESTO / PHILOSOPHY SECTION */
         .philosophy-card {
             background: rgba(255, 255, 255, 0.95);
             padding: 40px 50px;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            border-left: 6px solid #03c993; /* Green for growth/roots */
+            border-left: 6px solid #03c993; 
             margin: 0 auto 70px auto;
             max-width: 850px;
             animation: slideUpFade 0.6s ease-out 0.2s forwards;
@@ -113,7 +112,7 @@
             margin-bottom: 0;
         }
 
-        /* 7. ZIG-ZAG TIMELINE (MIDDLE SECTION) */
+        /* 7. ZIG-ZAG TIMELINE */
         .skills-grid {
             display: flex;
             flex-direction: column;
@@ -122,7 +121,7 @@
             margin: 0 auto 80px auto; 
         }
 
-        /* 8. SKILL CARDS & BASE HOVER EFFECTS */
+        /* 8. SKILL CARDS */
         .skill-card {
             background: #ffffff;
             padding: 35px;
@@ -141,61 +140,92 @@
         .skill-card:nth-child(even) { align-self: flex-end; }
 
         @media (max-width: 768px) {
-            .skill-card {
-                width: 100%;
-                max-width: 100%;
-                align-self: center !important; 
-            }
+            .skill-card { width: 100%; max-width: 100%; align-self: center !important; }
             .philosophy-card { padding: 30px 20px; }
             h1 { font-size: 1.6em; }
+            .benefits-grid { grid-template-columns: 1fr !important; }
         }
 
-        .skill-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(0,0,0, 0.08);
-            border-left-width: 8px; 
-        }
-
-        .skill-icon {
-            font-size: 2.2em;
-            margin-bottom: 15px;
-            transition: transform 0.4s ease;
-        }
+        .skill-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 15px 35px rgba(0,0,0, 0.08); border-left-width: 8px; }
+        .skill-icon { font-size: 2.2em; margin-bottom: 15px; transition: transform 0.4s ease; }
         .skill-card:hover .skill-icon { transform: scale(1.1); }
-
         .skill-card h3 { color: #334155; margin-top: 0; font-size: 1.2em; font-weight: 600; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
         .skill-card p { color: #64748b; line-height: 1.6; font-size: 0.95em; margin-bottom: 0; }
 
-        /* --- COLOR CODING THE SKILL CARDS --- */
+        /* Color Coding */
         .skill-card:nth-child(1) { border-left-color: #03c993; animation-delay: 0.3s; }
         .skill-card:nth-child(1) .skill-icon { color: #03c993; }
-
         .skill-card:nth-child(2) { border-left-color: #0ea5e9; animation-delay: 0.4s; }
         .skill-card:nth-child(2) .skill-icon { color: #0ea5e9; }
-
         .skill-card:nth-child(3) { border-left-color: #7d1de6; animation-delay: 0.5s; }
         .skill-card:nth-child(3) .skill-icon { color: #7d1de6; }
-
         .skill-card:nth-child(4) { border-left-color: #F59E0B; animation-delay: 0.6s; }
         .skill-card:nth-child(4) .skill-icon { color: #F59E0B; }
-
         .skill-card:nth-child(5) { border-left-color: #0ea5e9; animation-delay: 0.7s; }
         .skill-card:nth-child(5) .skill-icon { color: #0ea5e9; }
 
-        /* 9. BOTTOM CTA SECTION */
+        /* 9. NEW UPGRADED BOTTOM CTA */
         .bottom-cta {
-            text-align: center;
             background: #ffffff;
-            padding: 40px;
+            padding: 50px 40px;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.06);
             border-bottom: 6px solid #7d1de6; 
             opacity: 0;
             animation: slideUpFade 0.6s ease-out 0.8s forwards; 
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
-        .bottom-cta h2 { color: #334155; margin-top: 0; margin-bottom: 20px; font-size: 1.5em; font-weight: 800; }
+        
+        .bottom-cta h2.pitch-title {
+            color: #0ea5e9;
+            text-align: center;
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 40px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .benefit-item h4 {
+            color: #03c993;
+            font-size: 1.1em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .benefit-item p {
+            color: #64748b;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .final-hook {
+            text-align: center;
+            border-top: 2px solid #f1f5f9;
+            padding-top: 40px;
+        }
+
+        .final-hook h3 {
+            color: #334155;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .final-hook p {
+            color: #64748b;
+            margin-bottom: 25px;
+        }
 
         @keyframes slideUpFade {
             to { opacity: 1; transform: translateY(0); }
@@ -250,8 +280,28 @@
         </section>
 
         <div class="bottom-cta">
-            <h2>Ready to transform your data infrastructure?</h2>
-            <a href="mailto:solutions@bloomgenesisinc.com" class="button">Contact Me</a>
+            <h2 class="pitch-title">Why Plant Your Roots with Us?</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h4><i class="fa-solid fa-seedling"></i> Deep Roots, No Weeds</h4>
+                    <p>We are pure technical specialists. We build the data plumbing your marketing team can trust, without the distraction of generalist agency services.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4><i class="fa-solid fa-users-gear"></i> Agile Expertise</h4>
+                    <p>Access senior-level technical skill for specific projects, which is a perfect fit for the lean, agile teams common in growing businesses.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4><i class="fa-solid fa-tree"></i> Built to Last</h4>
+                    <p>We build scalable systems that prevent costly data problems down the road, ensuring your foundation can support your brand as it flourishes.</p>
+                </div>
+            </div>
+
+            <div class="final-hook">
+                <h3>Ready to cultivate a data landscape where your brand can thrive?</h3>
+                <p>Let's talk about getting your technical foundation right.</p>
+                <a href="mailto:solutions@bloomgenesisinc.com" class="button">Email us to scope your project</a>
+            </div>
         </div>
     </div>
 
