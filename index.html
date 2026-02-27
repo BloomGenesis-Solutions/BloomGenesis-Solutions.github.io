@@ -55,8 +55,7 @@
             padding: 50px 40px;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-            /* --- CHANGE 1: Hero Top Border (Now Logo Yellow) --- */
-            border-top: 6px solid #F59E0B; 
+            border-top: 6px solid #F59E0B; /* Logo Yellow */
             text-align: center;
             margin-bottom: 30px; 
             max-width: 800px;
@@ -66,28 +65,33 @@
         
         .logo { max-width: 250px; height: auto; margin-bottom: 20px; }
         h1 { color: #0ea5e9; font-size: 2em; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.5px; } 
-        
-        /* --- CHANGE 2: Hero Subtitle (Now Logo Yellow) --- */
-        h2.subtitle { color: #F59E0B; font-size: 1.1em; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 30px; }
+        h2.subtitle { color: #F59E0B; font-size: 1.1em; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 25px; } /* Logo Yellow */
+
+        .hero-description {
+            font-size: 1.05em; 
+            color: #475569; 
+            margin-bottom: 30px; 
+            line-height: 1.6; 
+            max-width: 600px; 
+            margin-left: auto; 
+            margin-right: auto;
+        }
 
         /* 5. CONTACT BUTTON */
         a.button { 
             display: inline-block; 
             padding: 16px 40px; 
-            /* --- CHANGE 3: Button Background (Now Yellow Gradient) --- */
-            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); 
-            color: #111; /* Dark text for contrast against yellow */
+            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); /* Yellow Gradient */
+            color: #111; /* Dark text for contrast */
             text-decoration: none; 
             font-weight: 700; 
             border-radius: 50px; 
             transition: all 0.3s ease; 
             font-size: 1.1em;
-            /* Update Shadow to match Yellow */
             box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
         } 
         a.button:hover { 
             transform: translateY(-3px);
-            /* Update Shadow to match Yellow */
             box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
         }
 
@@ -97,7 +101,7 @@
             padding: 40px 50px;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            border-left: 6px solid #03c993; /* Stays green for growth/roots */
+            border-left: 6px solid #03c993; /* Green */
             margin: 0 auto 70px auto;
             max-width: 850px;
             animation: slideUpFade 0.6s ease-out 0.2s forwards;
@@ -158,31 +162,25 @@
         .skill-card h3 { color: #334155; margin-top: 0; font-size: 1.2em; font-weight: 600; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
         .skill-card p { color: #64748b; line-height: 1.6; font-size: 0.95em; margin-bottom: 0; }
 
-        /* Color Coding Skills (Remains the same balanced cycle) */
+        /* Color Coding */
         .skill-card:nth-child(1) { border-left-color: #03c993; animation-delay: 0.3s; }
         .skill-card:nth-child(1) .skill-icon { color: #03c993; }
-        
         .skill-card:nth-child(2) { border-left-color: #0ea5e9; animation-delay: 0.4s; }
         .skill-card:nth-child(2) .skill-icon { color: #0ea5e9; }
-        
         .skill-card:nth-child(3) { border-left-color: #7d1de6; animation-delay: 0.5s; }
         .skill-card:nth-child(3) .skill-icon { color: #7d1de6; }
-        
-        /* Card 4 is already Yellow! */
         .skill-card:nth-child(4) { border-left-color: #F59E0B; animation-delay: 0.6s; }
         .skill-card:nth-child(4) .skill-icon { color: #F59E0B; }
-        
         .skill-card:nth-child(5) { border-left-color: #0ea5e9; animation-delay: 0.7s; }
         .skill-card:nth-child(5) .skill-icon { color: #0ea5e9; }
 
-        /* 9. UPGRADED BOTTOM CTA */
+        /* 9. BOTTOM CTA SECTION */
         .bottom-cta {
             background: #ffffff;
             padding: 50px 40px;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-            /* --- CHANGE 4: CTA Bottom Border (Now Logo Yellow) --- */
-            border-bottom: 6px solid #F59E0B; 
+            border-bottom: 6px solid #F59E0B; /* Logo Yellow */
             opacity: 0;
             animation: slideUpFade 0.6s ease-out 0.8s forwards; 
             max-width: 900px;
@@ -213,6 +211,11 @@
             <img src="bg-logo-full.png" alt="BloomGenesis Logo" class="logo">
             <h1>Cultivating Digital Growth<br>From the Roots Up</h1>
             <h2 class="subtitle">Technical Data Foundations for Ambitious Brands</h2>
+            
+            <p class="hero-description">
+                Expert <strong>freelance</strong> data architecture specializing in modern tracking solutions, robust data layers, and seamless platform integrations.
+            </p>
+
             <a href="mailto:solutions@bloomgenesisinc.com" class="button">Contact Me</a>
         </header>
 
