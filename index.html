@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BloomGenesis Solutions | Tag Implementation</title>
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         /* 1. ANIMATED DATA GRID BACKGROUND */
         body { 
@@ -18,7 +20,6 @@
             color: #334155; 
             margin: 0; 
             padding: 40px 20px;
-            /* Creates a subtle blueprint/grid background */
             background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
             background-size: 40px 40px;
             background-position: center center;
@@ -30,7 +31,7 @@
             margin: 0 auto;
             display: flex;
             gap: 40px;
-            flex-wrap: wrap; /* Allows stacking on mobile phones */
+            flex-wrap: wrap; 
             align-items: flex-start;
         }
 
@@ -41,8 +42,8 @@
             padding: 40px;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            border-top: 6px solid #03c993; /* Signature Green */
-            position: sticky; /* Keeps it on screen while scrolling the cards */
+            border-top: 6px solid #03c993; 
+            position: sticky; 
             top: 40px;
             text-align: center;
         }
@@ -55,7 +56,7 @@
         a.button { 
             display: inline-block; 
             padding: 16px 32px; 
-            background: linear-gradient(135deg, #7d1de6 0%, #5b12a8 100%); /* Purple Gradient */
+            background: linear-gradient(135deg, #7d1de6 0%, #5b12a8 100%); 
             color: #fff; 
             text-decoration: none; 
             font-weight: bold; 
@@ -84,10 +85,8 @@
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border-left: 4px solid #0ea5e9; /* Blue accent */
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
-            
-            /* Setting up the entrance animation */
+            border-left: 4px solid #0ea5e9; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             opacity: 0;
             transform: translateY(30px);
             animation: slideUpFade 0.6s ease-out forwards;
@@ -96,18 +95,30 @@
         .skill-card:hover {
             transform: translateY(-8px) scale(1.02);
             box-shadow: 0 15px 35px rgba(14, 165, 233, 0.15);
-            border-left: 8px solid #03c993; /* Changes to green on hover */
+            border-left: 8px solid #03c993; 
+        }
+
+        /* 7. ICON STYLING */
+        .skill-icon {
+            font-size: 2.2em;
+            color: #0ea5e9; /* Starts blue to match the border */
+            margin-bottom: 15px;
+            transition: color 0.4s ease;
+        }
+        
+        /* Makes the icon turn green when you hover over the card */
+        .skill-card:hover .skill-icon {
+            color: #03c993; 
         }
 
         .skill-card h3 { color: #334155; margin-top: 0; font-size: 1.2em; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
         .skill-card p { color: #64748b; line-height: 1.6; font-size: 0.95em; margin-bottom: 0; }
 
-        /* 7. STAGGERED ENTRANCE ANIMATIONS */
+        /* 8. STAGGERED ENTRANCE ANIMATIONS */
         @keyframes slideUpFade {
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Delays each card slightly so they cascade in */
         .skill-card:nth-child(1) { animation-delay: 0.1s; }
         .skill-card:nth-child(2) { animation-delay: 0.2s; }
         .skill-card:nth-child(3) { animation-delay: 0.3s; }
@@ -131,26 +142,31 @@
         <section class="skills-grid">
             
             <div class="skill-card">
+                <i class="fa-solid fa-server skill-icon"></i>
                 <h3>GTM & sGTM</h3>
                 <p>Acting as the central nervous system for your website's data. Server-Side GTM takes this further by moving execution to a secure cloud server—improving page speed and data accuracy.</p>
             </div>
 
             <div class="skill-card">
+                <i class="fa-solid fa-chart-line skill-icon"></i>
                 <h3>Google Analytics 4</h3>
                 <p>Transitioning to and optimizing GA4 to accurately track user journeys, custom events, and advanced conversions to deliver actionable business insights.</p>
             </div>
 
             <div class="skill-card">
+                <i class="fa-solid fa-bullseye skill-icon"></i>
                 <h3>Campaign Manager 360</h3>
                 <p>Seamlessly integrating CM360. I specialize in precise floodlight configuration and ad attribution to ensure enterprise media campaigns are tracked flawlessly.</p>
             </div>
 
             <div class="skill-card">
+                <i class="fa-solid fa-layer-group skill-icon"></i>
                 <h3>Data Layer Architecture</h3>
                 <p>Structuring custom, scalable Data Layers to capture e-commerce transactions and critical site variables. The absolute foundation of reliable tracking.</p>
             </div>
 
             <div class="skill-card">
+                <i class="fa-solid fa-chart-pie skill-icon"></i>
                 <h3>Looker Studio</h3>
                 <p>Transforming complex, raw data into dynamic, automated, and visually engaging dashboards that allow stakeholders to easily monitor KPIs.</p>
             </div>
