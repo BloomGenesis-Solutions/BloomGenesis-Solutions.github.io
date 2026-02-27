@@ -1,119 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KVP9JT42');</script>
-<!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BloomGenesis Solutions | Tag Implementation</title>
+    <title>BloomGenesis | Analytics Specialist</title>
     
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KVP9JT42');</script>
     <style>
-        /* 1. MAIN THEME & LAYOUT */
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 40px 0; display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center; }
-        .container { max-width: 650px; padding: 40px; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #7d1de6; margin: 20px; } 
-        .logo { max-width: 70%; height: auto; margin-bottom: 20px; }
-        h2 { color: #03a1fc; font-size: 1.2em; font-weight: bold; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; } 
-        .intro-text { line-height: 1.6; color: #555; margin-bottom: 30px; font-size: 1.05em; }
-        
-        /* 2. ACCORDION DROP-DOWNS */
-        .skills-accordion { margin-bottom: 35px; text-align: left; }
-        details { background-color: #f9f9f9; margin-bottom: 15px; border-radius: 6px; border: 1px solid #e0e0e0; overflow: hidden; }
-        
-        /* 3. THE CLICKABLE TITLE */
-        summary { padding: 15px 20px; font-weight: bold; cursor: pointer; color: #333; list-style-type: none; position: relative; transition: background-color 0.3s ease; }
-        summary::-webkit-details-marker { display: none; }
-        summary::after { content: '+'; position: absolute; right: 20px; font-size: 1.5em; line-height: 1; color: #03a1fc; top: 50%; transform: translateY(-50%); }
-        summary:hover { background-color: #f1f1f1; color: #03a1fc; }
-        
-        /* 4. THE OPEN STATE HIGHLIGHT */
-        details[open] summary { color: #7d1de6; background-color: #f4ebff; border-bottom: 1px solid #e0e0e0; }
-        details[open] summary::after { content: '-'; color: #7d1de6; }
+        /* 1. GLOBAL DARK THEME */
+        body {
+            background-color: #0f172a; /* Deep Midnight */
+            color: #f1f5f9;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-        /* 5. THE ANIMATION BLUEPRINT */
+        /* 2. GLASSMORPHISM CONTAINER */
+        .container {
+            background: rgba(30, 41, 59, 0.7); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 60px 40px;
+            max-width: 450px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: floatDown 0.8s ease-out forwards;
+        }
+
+        /* 3. ELEMENTS */
+        .logo {
+            max-width: 160px;
+            margin-bottom: 24px;
+            filter: drop-shadow(0 0 8px rgba(3, 201, 147, 0.2));
+            transition: transform 0.3s ease;
+        }
+        .logo:hover { transform: scale(1.05); }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 35px;
+            font-size: 1.05rem;
+        }
+
+        /* 4. THE ACTION BUTTON */
+        a.button {
+            display: inline-block;
+            padding: 18px 36px;
+            background: linear-gradient(135deg, #03c993 0%, #02a377 100%);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 10px 20px -5px rgba(3, 201, 147, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        a.button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgba(3, 201, 147, 0.5);
+        }
+
+        /* 5. ANIMATIONS */
         @keyframes floatDown {
-            from { opacity: 0; transform: translateY(-10px); }
+            from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* The hidden text style (Notice opacity is 0 so it stays hidden) */
-        details p { padding: 20px; margin: 0; line-height: 1.6; color: #555; font-size: 0.95em; opacity: 0; }
-        
-        /* The class our JavaScript will add to trigger the animation */
-        .play-animation { animation: floatDown 0.6s ease-out forwards; }
-        
-        /* 6. CONTACT BUTTON */
-        a.button { display: inline-block; padding: 14px 30px; background-color: #03c993; color: #fff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: 0.3s; font-size: 1.1em; } 
-        a.button:hover { background-color: #02a377; }
+        /* DIY Banner Styling (Ensuring it fits Dark Mode) */
+        #consent-banner {
+            background: #1e293b !important;
+            border-top: 4px solid #03c993 !important;
+            color: #f1f5f9 !important;
+        }
     </style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KVP9JT42"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KVP9JT42"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <div class="container">
         <img src="bg-logo-full.png" alt="BloomGenesis Logo" class="logo">
-        
-        <h2>Tag Implementation & Analytics</h2>
-        <p class="intro-text">Expert freelance data architecture specializing in modern tracking solutions, robust data layers, and seamless platform integrations.</p>
-        
-        <div class="skills-accordion">
-            
-            <details>
-                <summary>Google Tag Manager (GTM & sGTM)</summary>
-                <p>Google Tag Manager acts as the central nervous system for your website's data. By implementing robust data layers, we can enrich and enhance the data sent to your marketing platforms. Server-Side GTM (sGTM) takes this a step further by moving tag execution to a secure cloud server—improving page speed, increasing data accuracy, and giving you ultimate control over user privacy.</p>
-            </details>
-
-            <details>
-                <summary>Google Analytics 4 (GA4)</summary>
-                <p>Transitioning to and optimizing GA4 to accurately track user journeys, custom events, and advanced conversions. I ensure your analytics properties are architected to deliver meaningful, actionable business insights rather than just raw traffic numbers.</p>
-            </details>
-
-            <details>
-                <summary>Campaign Manager 360 (CM360)</summary>
-                <p>Seamlessly integrating CM360 within your tracking ecosystem. I specialize in precise floodlight configuration and ad attribution to ensure your enterprise-level media campaigns are tracked flawlessly across all digital touchpoints.</p>
-            </details>
-
-            <details>
-                <summary>Data Layer Architecture</summary>
-                <p>Structuring custom, scalable Data Layers to capture e-commerce transactions, dynamic user interactions, and critical site variables. A clean data layer is the absolute foundation of reliable tracking and analytics.</p>
-            </details>
-
-            <details>
-                <summary>Looker Studio Dashboards</summary>
-                <p>Transforming complex, raw data into dynamic, automated, and visually engaging dashboards. I build reports that cut through the noise, allowing stakeholders to easily monitor KPIs and make data-driven decisions.</p>
-            </details>
-
-        </div>
-        
-        <a href="mailto:solutions@bloomgenesisinc.com" class="button">Contact Me</a>
+        <h2>Precision Analytics</h2>
+        <p>Architecting privacy-first tracking solutions for data-driven agencies.</p>
+        <a href="mailto:contact@bloomgenesisinc.com" class="button">Start Your Implementation</a>
     </div>
-
-    <script>
-        // Grab all the <details> tags on the page
-        const allDropdowns = document.querySelectorAll('details');
-        
-        allDropdowns.forEach(dropdown => {
-            // Listen for when someone clicks one open or closed
-            dropdown.addEventListener('toggle', function() {
-                const paragraph = this.querySelector('p');
-                
-                if (this.open) {
-                    // Force the browser reflow (The magic trick!)
-                    void paragraph.offsetWidth; 
-                    // Add the animation class
-                    paragraph.classList.add('play-animation');
-                } else {
-                    // Remove the animation class when closed so it resets
-                    paragraph.classList.remove('play-animation');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
