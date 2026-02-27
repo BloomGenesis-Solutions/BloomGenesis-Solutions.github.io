@@ -8,112 +8,112 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KVP9JT42');</script>
 <!-- End Google Tag Manager -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BloomGenesis Solutions | Tag Implementation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloomGenesis Solutions | Tag Implementation</title>
+    
+    <style>
+        /* 1. MAIN THEME & LAYOUT */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 40px 0; display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center; }
+        .container { max-width: 650px; padding: 40px; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #7d1de6; margin: 20px; } 
+        .logo { max-width: 70%; height: auto; margin-bottom: 20px; }
+        h2 { color: #03a1fc; font-size: 1.2em; font-weight: bold; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; } 
+        .intro-text { line-height: 1.6; color: #555; margin-bottom: 30px; font-size: 1.05em; }
+        
+        /* 2. ACCORDION DROP-DOWNS */
+        .skills-accordion { margin-bottom: 35px; text-align: left; }
+        details { background-color: #f9f9f9; margin-bottom: 15px; border-radius: 6px; border: 1px solid #e0e0e0; overflow: hidden; }
+        
+        /* 3. THE CLICKABLE TITLE */
+        summary { padding: 15px 20px; font-weight: bold; cursor: pointer; color: #333; list-style-type: none; position: relative; transition: background-color 0.3s ease; }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '+'; position: absolute; right: 20px; font-size: 1.5em; line-height: 1; color: #03a1fc; top: 50%; transform: translateY(-50%); }
+        summary:hover { background-color: #f1f1f1; color: #03a1fc; }
+        
+        /* 4. THE OPEN STATE HIGHLIGHT */
+        details[open] summary { color: #7d1de6; background-color: #f4ebff; border-bottom: 1px solid #e0e0e0; }
+        details[open] summary::after { content: '-'; color: #7d1de6; }
 
-<style>
-/* 1. MAIN THEME & LAYOUT */
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 40px 0; display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center; }
-.container { max-width: 650px; padding: 40px; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #7d1de6; margin: 20px; } 
-.logo { max-width: 70%; height: auto; margin-bottom: 20px; }
-h2 { color: #03a1fc; font-size: 1.2em; font-weight: bold; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; } 
-.intro-text { line-height: 1.6; color: #555; margin-bottom: 30px; font-size: 1.05em; }
+        /* 5. THE ANIMATION BLUEPRINT */
+        @keyframes floatDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-/* 2. ACCORDION DROP-DOWNS */
-.skills-accordion { margin-bottom: 35px; text-align: left; }
-details { background-color: #f9f9f9; margin-bottom: 15px; border-radius: 6px; border: 1px solid #e0e0e0; overflow: hidden; }
-
-/* 3. THE CLICKABLE TITLE */
-summary { padding: 15px 20px; font-weight: bold; cursor: pointer; color: #333; list-style-type: none; position: relative; transition: background-color 0.3s ease; }
-summary::-webkit-details-marker { display: none; }
-summary::after { content: '+'; position: absolute; right: 20px; font-size: 1.5em; line-height: 1; color: #03a1fc; top: 50%; transform: translateY(-50%); }
-summary:hover { background-color: #f1f1f1; color: #03a1fc; }
-
-/* 4. THE OPEN STATE HIGHLIGHT */
-details[open] summary { color: #7d1de6; background-color: #f4ebff; border-bottom: 1px solid #e0e0e0; }
-details[open] summary::after { content: '-'; color: #7d1de6; }
-
-/* 5. THE ANIMATION BLUEPRINT */
-@keyframes floatDown {
-from { opacity: 0; transform: translateY(-10px); }
-to { opacity: 1; transform: translateY(0); }
-}
-
-/* The hidden text style (Notice opacity is 0 so it stays hidden) */
-details p { padding: 20px; margin: 0; line-height: 1.6; color: #555; font-size: 0.95em; opacity: 0; }
-
-/* The class our JavaScript will add to trigger the animation */
-.play-animation { animation: floatDown 0.6s ease-out forwards; }
-
-/* 6. CONTACT BUTTON */
-a.button { display: inline-block; padding: 14px 30px; background-color: #03c993; color: #fff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: 0.3s; font-size: 1.1em; } 
-a.button:hover { background-color: #02a377; }
-</style>
+        /* The hidden text style (Notice opacity is 0 so it stays hidden) */
+        details p { padding: 20px; margin: 0; line-height: 1.6; color: #555; font-size: 0.95em; opacity: 0; }
+        
+        /* The class our JavaScript will add to trigger the animation */
+        .play-animation { animation: floatDown 0.6s ease-out forwards; }
+        
+        /* 6. CONTACT BUTTON */
+        a.button { display: inline-block; padding: 14px 30px; background-color: #03c993; color: #fff; text-decoration: none; font-weight: bold; border-radius: 4px; transition: 0.3s; font-size: 1.1em; } 
+        a.button:hover { background-color: #02a377; }
+    </style>
 </head>
 <body>
-    
     <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KVP9JT42"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<div class="container">
-<img src="bg-logo-full.png" alt="BloomGenesis Logo" class="logo">
+    <div class="container">
+        <img src="bg-logo-full.png" alt="BloomGenesis Logo" class="logo">
+        
+        <h2>Tag Implementation & Analytics</h2>
+        <p class="intro-text">Expert freelance data architecture specializing in modern tracking solutions, robust data layers, and seamless platform integrations.</p>
+        
+        <div class="skills-accordion">
+            
+            <details>
+                <summary>Google Tag Manager (GTM & sGTM)</summary>
+                <p>Google Tag Manager acts as the central nervous system for your website's data. By implementing robust data layers, we can enrich and enhance the data sent to your marketing platforms. Server-Side GTM (sGTM) takes this a step further by moving tag execution to a secure cloud server—improving page speed, increasing data accuracy, and giving you ultimate control over user privacy.</p>
+            </details>
 
-<h2>Tag Implementation & Analytics</h2>
-<p class="intro-text">Expert freelance data architecture specializing in modern tracking solutions, robust data layers, and seamless platform integrations.</p>
+            <details>
+                <summary>Google Analytics 4 (GA4)</summary>
+                <p>Transitioning to and optimizing GA4 to accurately track user journeys, custom events, and advanced conversions. I ensure your analytics properties are architected to deliver meaningful, actionable business insights rather than just raw traffic numbers.</p>
+            </details>
 
-<div class="skills-accordion">
+            <details>
+                <summary>Campaign Manager 360 (CM360)</summary>
+                <p>Seamlessly integrating CM360 within your tracking ecosystem. I specialize in precise floodlight configuration and ad attribution to ensure your enterprise-level media campaigns are tracked flawlessly across all digital touchpoints.</p>
+            </details>
 
-<details>
-<summary>Google Tag Manager (GTM & sGTM)</summary>
-<p>Google Tag Manager acts as the central nervous system for your website's data. By implementing robust data layers, we can enrich and enhance the data sent to your marketing platforms. Server-Side GTM (sGTM) takes this a step further by moving tag execution to a secure cloud server—improving page speed, increasing data accuracy, and giving you ultimate control over user privacy.</p>
-</details>
+            <details>
+                <summary>Data Layer Architecture</summary>
+                <p>Structuring custom, scalable Data Layers to capture e-commerce transactions, dynamic user interactions, and critical site variables. A clean data layer is the absolute foundation of reliable tracking and analytics.</p>
+            </details>
 
-<details>
-<summary>Google Analytics 4 (GA4)</summary>
-<p>Transitioning to and optimizing GA4 to accurately track user journeys, custom events, and advanced conversions. I ensure your analytics properties are architected to deliver meaningful, actionable business insights rather than just raw traffic numbers.</p>
-</details>
+            <details>
+                <summary>Looker Studio Dashboards</summary>
+                <p>Transforming complex, raw data into dynamic, automated, and visually engaging dashboards. I build reports that cut through the noise, allowing stakeholders to easily monitor KPIs and make data-driven decisions.</p>
+            </details>
 
-<details>
-<summary>Campaign Manager 360 (CM360)</summary>
-<p>Seamlessly integrating CM360 within your tracking ecosystem. I specialize in precise floodlight configuration and ad attribution to ensure your enterprise-level media campaigns are tracked flawlessly across all digital touchpoints.</p>
-</details>
+        </div>
+        
+        <a href="mailto:solutions@bloomgenesisinc.com" class="button">Contact Me</a>
+    </div>
 
-<details>
-<summary>Data Layer Architecture</summary>
-<p>Structuring custom, scalable Data Layers to capture e-commerce transactions, dynamic user interactions, and critical site variables. A clean data layer is the absolute foundation of reliable tracking and analytics.</p>
-</details>
-
-<details>
-<summary>Looker Studio Dashboards</summary>
-<p>Transforming complex, raw data into dynamic, automated, and visually engaging dashboards. I build reports that cut through the noise, allowing stakeholders to easily monitor KPIs and make data-driven decisions.</p>
-</details>
-
-</div>
-
-<a href="mailto:solutions@bloomgenesisinc.com" class="button">Contact Me</a>
-</div>
-
-<script>
-// Grab all the <details> tags on the page
-const allDropdowns = document.querySelectorAll('details');
-
-allDropdowns.forEach(dropdown => {
-// Listen for when someone clicks one open or closed
-dropdown.addEventListener('toggle', function() {
-const paragraph = this.querySelector('p');
-
-if (this.open) {
-// Force the browser reflow (The magic trick!)
-void paragraph.offsetWidth; 
-// Add the animation class
-paragraph.classList.add('play-animation');
-} else {
-// Remove the animation class when closed so it resets
-paragraph.classList.remove('play-animation');
-}
-});
-});
-</script>
+    <script>
+        // Grab all the <details> tags on the page
+        const allDropdowns = document.querySelectorAll('details');
+        
+        allDropdowns.forEach(dropdown => {
+            // Listen for when someone clicks one open or closed
+            dropdown.addEventListener('toggle', function() {
+                const paragraph = this.querySelector('p');
+                
+                if (this.open) {
+                    // Force the browser reflow (The magic trick!)
+                    void paragraph.offsetWidth; 
+                    // Add the animation class
+                    paragraph.classList.add('play-animation');
+                } else {
+                    // Remove the animation class when closed so it resets
+                    paragraph.classList.remove('play-animation');
+                }
+            });
+        });
+    </script>
 </body>
+</html>
